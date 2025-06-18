@@ -1,0 +1,14 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="fade-in" style="text-align: center; padding: 4rem;">
+  <div class="card" style="max-width: 500px; margin: auto;">
+    <h2>You’ve been logged out</h2>
+    <p>We hope to see you again soon!</p>
+    <a href="{% url 'home' %}">
+      <button>Return to Home</button>
+    </a>
+  </div>
+</div>
+{% endblock %}

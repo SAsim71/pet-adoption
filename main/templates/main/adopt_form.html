@@ -1,0 +1,19 @@
+{% extends 'main/base.html' %}
+{% block content %}
+<div style="max-width: 500px; margin: 2rem auto; padding: 1rem; box-shadow: 0 0 8px rgba(0,0,0,0.1); border-radius: 8px;">
+  <h2 style="text-align: center;">Adopt {{ pet.name }}</h2>
+  <form method="post" style="display: flex; flex-direction: column;">
+    {% csrf_token %}
+    <label>Your Name:</label>
+    <input type="text" name="name" required style="padding: 0.5rem; margin-bottom: 1rem;">
+
+    <label>Contact Number:</label>
+    <input type="text" name="contact" required style="padding: 0.5rem; margin-bottom: 1rem;">
+
+    <label>Address:</label>
+    <textarea name="address" required style="padding: 0.5rem; margin-bottom: 1rem;"></textarea>
+
+    <button type="submit" style="padding: 0.7rem; background-color: var(--primary-color); color: white; border: none; border-radius: 5px;">Submit Adoption Request</button>
+  </form>
+</div>
+{% endblock %}

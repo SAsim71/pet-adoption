@@ -1,0 +1,50 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="fade-in" style="padding: 2rem; max-width: 1200px; margin: auto;">
+
+  <!-- Welcome Section (for unauthenticated users) -->
+  {% if not user.is_authenticated %}
+  <section style="text-align: center; margin-bottom: 4rem;">
+    <h1 style="font-size: 2.5rem;">Welcome to PetAdopt 🐶</h1>
+    <p style="font-size: 1.15rem; max-width: 700px; margin: 1rem auto;">
+      Give a second chance to a furry friend. PetAdopt connects you with lovable pets in need of a forever home.
+    </p>
+    <img src="{% static 'images/landing_pet.png' %}" alt="Adoptable Pets" style="max-width: 500px; height: auto; border-radius: var(--border-radius); margin: 2rem auto; display: block;">
+
+    
+    <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+      <a href="{% url 'account_signup' %}" class="btn-primary">Get Started</a>
+      <a href="{% url 'about_us' %}" class="btn-secondary">Learn More</a>
+    </div>
+
+    <p style="margin-top: 2rem; color: var(--text-color); font-size: 0.9rem;">
+      Already have an account? <a href="{% url 'account_login' %}">Log In</a>
+    </p>
+  </section>
+  {% endif %}
+
+  <!-- Pets Grid (authenticated users only) -->
+  {% if user.is_authenticated %}
+  <section style="margin-top: 2rem;">
+    <h2 style="text-align: center; margin-bottom: 2rem;">Available Pets for Adoption</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+      {% for pet in pets %}
+      <div class="card">
+        <img src="{{ pet.image.url }}" alt="{{ pet.name }}">
+        <h3>{{ pet.name }}</h3>
+        <p>{{ pet.breed }} • {{ pet.age }} years old</p>
+        <a href="{% url 'pet_detail' pet.id %}">
+          <button class="btn-secondary">View Profile</button>
+        </a>
+      </div>
+      {% empty %}
+        <p style="text-align: center;">No pets available at the moment. Please check back later!</p>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+</div>
+{% endblock %}

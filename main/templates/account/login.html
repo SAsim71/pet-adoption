@@ -1,0 +1,28 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% load socialaccount %}
+
+{% block content %}
+<div class="fade-in" style="max-width: 400px; margin: 4rem auto;">
+  <div class="card">
+    <h2>Sign Up</h2>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Log in</button>
+    </form>
+
+    <p>Already have an account? <a href="{% url 'account_login' %}">Log in</a></p>
+
+    <div style="text-align: center; margin-top: 1.5rem;">
+      <p>Or sign up with your Google account:</p>
+      <a href="{% provider_login_url 'google' %}?process=signup">
+        <button class="google-btn" style="display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; border: none; background-color: white; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: pointer;">
+          <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google logo" style="height: 20px;">
+          Sign up with Google
+        </button>
+      </a>
+    </div>
+  </div>
+</div>
+{% endblock %}

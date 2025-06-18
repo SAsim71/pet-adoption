@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}Pet Adoption{% endblock %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/global.css' %}">
+  <link rel="icon" href="{% static 'images/favicon.png' %}">
+</head>
+<body>
+
+  <!-- Header -->
+  <header style="background-color: var(--primary-color); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center;">
+    <a href="{% url 'home' %}" style="font-size: 1.5rem; font-weight: 600; color: var(--text-color);">🐶 PetAdopt</a>
+    <nav>
+      <a href="{% url 'home' %}" class="nav-link">Home</a>
+      <a href="{% url 'about_us' %}" class="nav-link">About</a>
+      <a href="{% url 'contact_us' %}" class="nav-link">Contact</a>
+      {% if user.is_authenticated %}
+        <form method="post" action="{% url 'account_logout' %}" style="display:inline;">
+          {% csrf_token %}
+          <button type="submit" class="btn-secondary">Logout</button>
+        </form>
+      {% else %}
+        <a href="{% url 'account_login' %}" class="btn-primary">Login</a>
+        <a href="{% url 'account_signup' %}" class="btn-primary">Sign Up</a>
+      {% endif %}
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- Footer -->
+  <footer style="background-color: var(--primary-color); color: var(--text-color); text-align: center; padding: 1rem; margin-top: 2rem;">
+    <p style="margin: 0;">&copy; {{ year|default:2025 }} PetAdopt. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

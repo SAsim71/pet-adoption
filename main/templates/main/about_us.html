@@ -1,0 +1,46 @@
+{% extends 'main/base.html' %}
+{% block content %}
+<div style="max-width: 900px; margin: auto; padding: 2rem;" class="fade-in">
+  <h2 style="text-align: center;">About Us</h2>
+
+  <section style="margin-bottom: 2rem;">
+    <p style="font-size: 1.1rem; line-height: 1.7;">
+      Welcome to <strong>PetAdopt</strong> – where hearts meet paws. We are a community-driven platform dedicated to finding loving homes for abandoned, rescued, and stray animals.
+    </p>
+  </section>
+
+  <section style="margin-bottom: 2rem;">
+    <h3>🐾 Our Mission</h3>
+    <p style="font-size: 1.05rem; line-height: 1.6;">
+      We aim to bridge the gap between pets in need and caring individuals who are ready to give them a second chance at life. Every animal deserves love, warmth, and a forever home.
+    </p>
+  </section>
+
+  <section style="margin-bottom: 2rem;">
+    <h3>📍 Our Location</h3>
+    <p style="font-size: 1.05rem; line-height: 1.6;">
+      Based in <strong>Lahore, Pakistan</strong>, our services are available to adopters all over the country. We collaborate with rescue shelters and foster homes to ensure the best care.
+    </p>
+  </section>
+
+  <section style="margin-bottom: 2rem;">
+    <h3>📞 Contact Information</h3>
+    <ul style="font-size: 1.05rem; line-height: 1.8; list-style-type: none; padding-left: 0;">
+      <li><strong>Email:</strong> support@petadopt.pk</li>
+      <li><strong>Phone:</strong> +92 300 1234567</li>
+      <li><strong>Office Hours:</strong> Mon–Sat, 10:00 AM – 6:00 PM</li>
+    </ul>
+  </section>
+
+  <section style="margin-bottom: 2rem;">
+    <h3>👨‍👩‍👧 Meet Our Team</h3>
+    <p style="font-size: 1.05rem; line-height: 1.6;">
+      Our team includes passionate volunteers, veterinarians, and coordinators who work tirelessly to ensure safe, loving adoptions. (Team photos and bios coming soon!)
+    </p>
+  </section>
+
+  <div style="text-align: center; margin-top: 2rem;">
+    <a href="{% url 'contact_us' %}" class="btn-primary">Get in Touch</a>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "main/base.html" %}
+
+{% block title %}Confirm Login{% endblock %}
+
+{% block content %}
+<div style="max-width: 600px; margin: 3rem auto; text-align: center;">
+  <h2 style="margin-bottom: 1rem;">Sign In via Google</h2>
+  <p style="margin-bottom: 2rem;">
+    You are about to sign in using your Google account. If this is not your intention,
+    please cancel and return to the login page.
+  </p>
+
+  <form method="post" action="">
+    {% csrf_token %}
+    <button type="submit" class="btn-primary">Continue</button>
+    <a href="{% url 'account_login' %}" class="btn-secondary" style="margin-left: 1rem;">Cancel</a>
+  </form>
+</div>
+{% endblock %}
